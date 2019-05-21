@@ -1,4 +1,13 @@
 <hello name="{{ name }}"></hello>
 <p>
   Start editing to see some magic happen :)
+
+  numero: <span> {{ numero }}</span>
+
+  
 </p>
+<div>{{ isHigher ? ':)' : ':(' }} </div>
+<p [innerHTML]="title"></p>
+<button (click)="onClick($event)" >Click me!</button>
+<input [value]="textValue" type="text"/>
+<p [innerHTML]="data"></p>
