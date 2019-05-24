@@ -13,6 +13,6 @@
 <p [innerHTML]="data"></p>
 <ul>
   <li *ngFor="let item of data">
-    {{item}}
+    <item [item] = "item" ></item>
   </li>
 </ul>
