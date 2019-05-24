@@ -11,3 +11,8 @@
 <button (click)="onClick($event)" >Click me!</button>
 <input [value]="textValue" type="text"/>
 <p [innerHTML]="data"></p>
+<ul>
+  <li *ngFor="let item of data">
+    {{item}}
+  </li>
+</ul>

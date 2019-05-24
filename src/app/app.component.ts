@@ -32,7 +32,7 @@ private data : string[];
     console.log("clicking");
     console.log(event, this.textValue);
     this.textValue = "HOLA";
-    this.data = this.data[...,"adios"];
+    this.data = [...this.data,"adios"];
   }
   
 }
