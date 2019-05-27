@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { Item } from './model';
 
 @Component({
   selector: 'my-app',
@@ -36,4 +36,7 @@ private data : string[];
     this.data = [...this.data,"adios"];
   }
   
+  refresh(event: Item){
+
+  }
 }

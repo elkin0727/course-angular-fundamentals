@@ -1,1 +1,3 @@
-{{item}}
+<div *ngIf="!edit">{{item}}</div> 
+<input *ngIf="edit" [(ngModel)]="item"/>
+<button (click)="onEdit()">{{ (edit)?'done':'edit'}}</button>
