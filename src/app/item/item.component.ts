@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Item }from '../model'
 
 
 @Component({
@@ -8,19 +9,24 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ItemComponent  {
 
-  @Input() item;
+  @Input() item : Item;
 
   @Output()
-  itemChange: EventEmitter<string> = new EventEmitter();
+  itemChange: EventEmitter<Item> = new EventEmitter();
 
   edit: boolean;
   constructor (){
     this.edit = false;
   }  
-  onEdit(){
+  onEdit(newName: string){
   if (this.edit) {
+    
     this.itemChange.emit(this.item);
   }
   this.edit = !this.edit;
+  }
+  handleChange(event: string){
+    this.item.name=event;
+    console.log(event)
   }
 }

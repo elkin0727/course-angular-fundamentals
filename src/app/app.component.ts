@@ -13,12 +13,13 @@ export class AppComponent  {
 private isHigher: boolean;
 private title: string;
 private textValue: string;
-private data : string[];
+private data : Item[];
   constructor (){
     this.numero=25;
     this.isHigher = this.isNumberHigher();
     this.title = "<span>Este es un span</span>"
-    this.data = [ 'hola', 'esto', 'es','un','arreglo'];
+    let i: number =0;
+    this.data = [ {id: i++,name: 'hola'} , {id: i++,name: 'esto'},{id: i++,name: 'es'},{id: i++,name: 'un'},{id: i++,name: 'arreglo'}];
   }
 
   isNumberHigher(){
@@ -33,10 +34,13 @@ private data : string[];
     console.log("clicking");
     console.log(event, this.textValue);
     this.textValue = "HOLA";
-    this.data = [...this.data,"adios"];
+    this.data = [...this.data,{id: 6, name: "adios"}];
   }
   
-  refresh(event: Item){
+  refresh(item: Item){
+    console.log('refresh', item);
 
+    //this.data[item.id].name = item.name;
+    this.data.find((it) => it.id ==item.id ).name = item.name;
   }
 }
