@@ -18,15 +18,22 @@ export class ItemComponent  {
   constructor (){
     this.edit = false;
   }  
-  onEdit(newName: string){
+
+  ngOnInit() {
+   console.log("ngOnChange");
+    
+      this.item = Object.assign({},this.item);
+  }
+  onEdit(){
   if (this.edit) {
     
     this.itemChange.emit(this.item);
+    console.log("onEdit", newName)
   }
   this.edit = !this.edit;
   }
   handleChange(event: string){
     this.item.name=event;
-    console.log(event)
+    console.log("handleChange",event)
   }
 }
