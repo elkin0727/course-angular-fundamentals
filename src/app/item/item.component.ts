@@ -28,7 +28,7 @@ export class ItemComponent  {
   if (this.edit) {
     
     this.itemChange.emit(this.item);
-    console.log("onEdit", newName)
+    //console.log("onEdit", newName)
   }
   this.edit = !this.edit;
   }
