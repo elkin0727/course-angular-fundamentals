@@ -1,9 +1,8 @@
 {
-  "posts": [
-    { "id": 1, "title": "json-server", "author": "typicode" }
-  ],
-  "comments": [
-    { "id": 1, "body": "some comment", "postId": 1 }
+  "items": [
+    { "id": 1, "name": "Item name 1"},
+    { "id": 2, "name": "Item name 2"},
+    { "id": 3, "name": "Item name 3"}
   ],
   "profile": { "name": "typicode" }
 }

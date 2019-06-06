@@ -10,9 +10,9 @@
 <p [innerHTML]="title"></p>
 <button (click)="onClick($event)" >Click me!</button>
 <input [value]="textValue" type="text"/>
-<p [innerHTML]="data | json"></p>
+<p [innerHTML]="data | async | json"></p>
 <ul>
-  <li *ngFor="let item of data">
+  <li *ngFor="let item of data | async">
     <item (itemChange)= "refresh($event)" [item] = "item" ></item>
   </li>
 </ul>

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Item } from './model';
+import { ItemService } from './itemModule/item.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'my-app',
@@ -13,13 +15,19 @@ export class AppComponent  {
 private isHigher: boolean;
 private title: string;
 private textValue: string;
-private data : Item[];
-  constructor (){
+
+private data: Observable<Item[]>;
+  constructor (private itemService:ItemService){
     this.numero=25;
     this.isHigher = this.isNumberHigher();
     this.title = "<span>Este es un span</span>"
     let i: number =0;
-    this.data = [ {id: i++,name: 'hola'} , {id: i++,name: 'esto'},{id: i++,name: 'es'},{id: i++,name: 'un'},{id: i++,name: 'arreglo'}];
+    //this.data = [ {id: i++,name: 'hola'} , {id: i++,name: 'esto'},{id: i++,name: 'es'},{id: i++,name: 'un'},{id: i++,name: 'arreglo'}];
+    this.data = itemService.get();
+
+    // itemService.get().then((items:Array<Item>)=>{
+    //     this.data= items;
+    // });
   }
 
   isNumberHigher(){
@@ -34,7 +42,7 @@ private data : Item[];
     console.log("clicking");
     console.log(event, this.textValue);
     this.textValue = "HOLA";
-    this.data = [...this.data,{id: 6, name: "adios"}];
+    //this.data = [...this.data,{id: 6, name: "adios"}];
   }
   
   refresh(item: Item){
