@@ -8,8 +8,8 @@
 </p>
 <div>{{ isHigher ? ':)' : ':(' }} </div>
 <p [innerHTML]="title"></p>
-<button (click)="onClick($event)" >Click me!</button>
-<input [value]="textValue" type="text"/>
+<button (click)="onClick($event)" >Add</button>
+<input [(ngModel)]="textValue" type="text"/>
 <p [innerHTML]="data | async | json"></p>
 <ul>
   <li *ngFor="let item of data | async">

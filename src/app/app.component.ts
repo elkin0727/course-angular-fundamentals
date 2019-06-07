@@ -41,14 +41,19 @@ private data: Observable<Item[]>;
   {
     console.log("clicking");
     console.log(event, this.textValue);
-    this.textValue = "HOLA";
+    //this.textValue = "HOLA";
     //this.data = [...this.data,{id: 6, name: "adios"}];
+    this.itemService.post({name: this.textValue}).subscribe((response: any) => {
+        console.log(response);
+        this.data = this.itemService.get();  
+    });
   }
   
   refresh(item: Item){
     console.log('refresh', item);
 
     //this.data[item.id].name = item.name;
-    this.data.find((it) => it.id ==item.id ).name = item.name;
+    //this.data.find((it) => it.id ==item.id ).name = item.name;
+
   }
 }

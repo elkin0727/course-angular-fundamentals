@@ -1,13 +1,26 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { Item } from "../model";
+import { map } from "rxjs/operators";
+import { Observable, from } from "rxjs";
+
 @Injectable()
 export class ItemService {
-    
+    url = 'http://localhost:3000/items';
+    currentId: number = 0;
+
     constructor(private httpClient: HttpClient){}
 
     public get(){
-        const url = 'http://localhost:3000/items';
-        return this.httpClient.get<Item>(url);
+        
+        return this.httpClient.get<Item[]>(this.url)
+            .pipe(
+                map(items => {
+                    items.map(item => {
+                        this.currentId = item.id > this.currentId ? item.id : this.currentId
+                    })
+                    return (items)
+        }));
         // return this.httpClient.get<Item>(url).toPromise();
         /*return [
             { "id": 1, "name": "Item name 1"},
@@ -16,4 +29,7 @@ export class ItemService {
           ];*/
     }
     
+    public post({ id = ++this.currentId, name }: Partial<Item>){
+        return this.httpClient.post<any>(this.url, { id, name });
+    }
 }
