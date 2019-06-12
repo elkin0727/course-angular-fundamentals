@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Item } from "../model";
-import { map } from "rxjs/operators";
-import { Observable, from } from "rxjs";
+import { map, catchError } from "rxjs/operators";
+import { Observable, from, throwError } from "rxjs";
 
 @Injectable()
 export class ItemService {
@@ -30,6 +30,14 @@ export class ItemService {
     }
     
     public post({ id = ++this.currentId, name }: Partial<Item>){
-        return this.httpClient.post<any>(this.url, { id, name });
+        return this.httpClient.post<Item>(this.url, { id, name });
+    }
+
+    public put(item: Item){
+        return this.httpClient
+        .put<Item>(`${this.url}/${item.id}`,item)
+        .pipe(
+            catchError((error: any)=>throwError("Eror!"))
+        );
     }
 }
