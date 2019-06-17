@@ -12,7 +12,6 @@ export class ItemService {
     constructor(private httpClient: HttpClient){}
 
     public get(){
-        
         return this.httpClient.get<Item[]>(this.url)
             .pipe(
                 map(items => {
@@ -27,6 +26,10 @@ export class ItemService {
             { "id": 2, "name": "Item name 2"},
             { "id": 3, "name": "Item name 3"}
           ];*/
+    }
+
+    public getOne(id:number){
+        return this.httpClient.get<Item>(`${this.url}/${id}`);
     }
     
     public post({ id = ++this.currentId, name }: Partial<Item>){

@@ -1,0 +1,14 @@
+
+<div>
+    <form #form="ngForm">
+        <label>Id</label>
+        <input name="id" [ngModel]="item?.id">
+        <label>Name</label>
+        <input name="name" [ngModel]="item?.name">
+        {{ form.value | json }}
+ 
+        yes <input type="radio" name="active" [value]="true" [ngModel]="item?.active">
+        no <input type="radio" name="active" [value]="false" [ngModel]="item?.active" (ngModelChange)="chekInClick($event)">
+        <input type="number" name="date" [ngModel]="item?.date" *ngIf="form.value.active">
+    </form>
+</div>

@@ -1,13 +1,4 @@
-<hello name="{{ name }}"></hello>
-<p>
-  Start editing to see some magic happen :)
-
-  numero: <span> {{ numero }}</span>
-
-  
-</p>
-<div>{{ isHigher ? ':)' : ':(' }} </div>
-<p [innerHTML]="title"></p>
+<item-viewer></item-viewer>
 <button (click)="onClick($event)" >Add</button>
 <input [(ngModel)]="textValue" type="text"/>
 <p [innerHTML]="data | async | json"></p>
