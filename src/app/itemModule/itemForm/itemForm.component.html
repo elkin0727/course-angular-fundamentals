@@ -9,5 +9,13 @@
  
         Active <input type="checkbox" name="active" [ngModel]="item?.active" (ngModelChange)="chekInClick($event)">
         <input type="number" name="date" [ngModel]="item?.date" *ngIf="form.value.active">
-    </form>
+        <!-- <select name="state" [ngModel]="item?.state">
+            <option *ngFor="let state of states" [value]="state.key" [selected]="state.key === item?.state" >{{state.value}}</option>
+        </select>  -->
+
+        <select name="state" [ngModel]="item?.state">
+            <option *ngFor="let state of states" [ngValue]="state.key" >{{state.value}}</option>
+        </select> 
+
+    </form> 
 </div>
