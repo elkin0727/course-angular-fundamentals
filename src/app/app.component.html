@@ -1,10 +1,15 @@
-<router-outlet></router-outlet>
-<item-viewer></item-viewer>
-<button (click)="onClick($event)" >Add</button>
-<input [(ngModel)]="textValue" type="text"/>
-<p [innerHTML]="data | async | json"></p>
-<ul>
-  <li *ngFor="let item of data | async">
-    <item (itemChange)= "refresh($event)" [item] = "item" ></item>
-  </li>
+<nav><ul>
+    <li>
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact : true}">Home</a>
+    </li>
+    <li>
+        <a routerLink="/opss"  routerLinkActive="active">Opsss</a>
+    </li>
+
+    <li>
+        <a routerLink="/itemlist"  routerLinkActive="active">Item List</a>
+    </li>
+
 </ul>
+</nav>
+<router-outlet></router-outlet>

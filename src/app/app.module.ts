@@ -12,14 +12,27 @@ import { ItemService } from './itemModule/item.service';
 import { ItemViewer } from './itemModule/itemViewer/itemViewer.component';
 import { ItemForm } from './itemModule/itemForm/itemForm.component';
 import { RouterScroller } from '@angular/router/src/router_scroller';
+import { NotFoundComponent } from './not-found.component';
+import { ItemListComponent } from './itemModule/itemList/itemList.component';
 
-const routes : Route[] = [{ path : '' , pathMatch: 'full', component:HomeComponent }]
+const routes: Route[] = [
+    {
+        path: '',
+        pathMatch: 'full',
+        component: HomeComponent
+    }, {
+        path: '**',
+        component: NotFoundComponent
+    }]
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule, ItemModule, 
-        RouterModule.forRoot(routes) ],
-  declarations: [ AppComponent, HelloComponent, ItemViewer, ItemForm, HomeComponent ],
-  providers: [ ItemService ],
-  bootstrap:    [ AppComponent ],
+    imports: [BrowserModule, FormsModule, ItemModule,
+        RouterModule.forRoot(routes)],
+    declarations: [AppComponent,
+        NotFoundComponent,
+        HelloComponent,
+        HomeComponent],
+    providers: [ItemService],
+    bootstrap: [AppComponent],
 })
 export class AppModule { }

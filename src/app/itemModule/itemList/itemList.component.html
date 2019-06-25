@@ -1,0 +1,9 @@
+<item-viewer></item-viewer>
+<button (click)="onClick($event)" >Add</button>
+<input [(ngModel)]="textValue" type="text"/>
+<p [innerHTML]="data | async | json"></p>
+<ul>
+  <li *ngFor="let item of data | async">
+    <item (itemChange)= "refresh($event)" [item] = "item" ></item>
+  </li>
+</ul>
